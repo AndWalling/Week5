@@ -1,0 +1,51 @@
+// interface
+package Logger;
+
+public interface Logger {
+	public void log(String word);
+	public void error(String word2);
+}
+
+// implementing class 1
+class AsteriskLogger implements Logger{
+	public void log(String word) {
+		System.out.println("***" + word + "***");
+	}
+	public void error(String word2) {
+		System.out.println("****************");
+		System.out.println("***Error: " + word2 + "***");
+		System.out.println("****************");
+	}
+}
+
+// implementing class 2
+class SpacedLogger implements Logger{
+	public void log(String word) {
+		String newString = "";
+		for (int i = 0; i <= (word.length() - 1); i++) {
+			newString += (word.charAt(i) + " ");
+		}
+		System.out.println(newString);
+	}
+	public void error(String word2) {
+		String newString = "ERROR: ";
+		for (int i = 0; i <= (word2.length() - 1); i++) {
+			newString += (word2.charAt(i) + " ");
+		}
+		System.out.println(newString);
+	}
+}
+
+// main class "App"
+public class App {
+
+	public static void main(String[] args) {
+		AsteriskLogger newLog = new AsteriskLogger();
+		SpacedLogger newLog2 = new SpacedLogger();
+		newLog.log("Hello");
+		newLog.error("Hello");
+		newLog2.log("Hello");
+		newLog2.error("Hello");
+	}
+
+}
